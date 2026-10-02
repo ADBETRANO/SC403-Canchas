@@ -1,4 +1,4 @@
-# Prototipo – Proyecto Grupo 05
+# Prototipo – Proyecto Grupo 04
 
 Aquí se guardan las pantallas del prototipo (Figma) del sistema de alquiler de canchas.
 - Link de Figma: (pendiente)
