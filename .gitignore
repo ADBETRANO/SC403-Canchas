@@ -24,3 +24,7 @@ hs_err_pid*
 replay_pid*
 # Clave privada de Firebase - NUNCA subir
 src/main/resources/firebase/*.json
+# Maven / NetBeans
+target/
+nbproject/private/
+nb-configuration.xml
