@@ -12,7 +12,7 @@ Los clientes pueden ver las canchas disponibles, reservar y pagar; el administra
 |---|---|
 | Carlos Adrián Betrano Valverde | Coordinador – repositorio y video |
 | Daniel Murillo Zeledon | Analista de requerimientos, modelo de datos y flujo de ramas |
-| Juan Diego Murillo Ruiz | 
+| Juan Diego Murillo Ruiz | QA y documentación |
 
 ## 🛠️ Tecnologías
 - Java + Spring Boot (patrón MVC)
