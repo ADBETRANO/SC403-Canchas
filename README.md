@@ -1,4 +1,4 @@
-  # ⚽ CanchaYa – Sistema de alquiler de canchas de fútbol
+# ⚽ Golazo – Sistema de alquiler de canchas de fútbol
 
 **Proyecto Grupo 04 – SC-403 Desarrollo de Aplicaciones Web y Patrones**
 Universidad Fidélitas · III Cuatrimestre 2026
@@ -11,7 +11,7 @@ Los clientes pueden ver las canchas disponibles, reservar y pagar; el administra
 | Nombre | Rol |
 |---|---|
 | Carlos Adrián Betrano Valverde | Coordinador – repositorio y video |
-| Daniel Murillo Zeledon | Analista de requerimientos |
+| Daniel Murillo Zeledón | Analista de requerimientos |
 | Juan Diego Murillo Ruiz | QA y documentación |
 
 ## 🛠️ Tecnologías
@@ -25,17 +25,22 @@ Los clientes pueden ver las canchas disponibles, reservar y pagar; el administra
 | Carpeta | Contenido |
 |---|---|
 | `/docs` | Documentación: historias de usuario, modelo de datos y mapa de navegación |
-| `/prototipo` | Capturas y enlace del prototipo en Figma |
+| `/prototipo` | Capturas y enlace del prototipo |
 
 ## 🌿 Acuerdo de trabajo por ramas
 - **main**: solo versiones estables (entregas de avances). Nadie trabaja directo aquí.
 - **develop**: rama de integración, donde se une todo lo terminado.
 - **feature/HU-XX-descripcion**: una rama por historia de usuario, creada desde `develop`.
-    - Ejemplo: `feature/HU-06-crud-canchas`
+  - Ejemplo: `feature/HU-06-crud-canchas`
 - **Commits**: en español e iniciando con el ID de la historia.
-   - Ejemplo: `HU-06: agregar formulario de cancha`
+  - Ejemplo: `HU-06: agregar formulario de cancha`
 - **Pull requests**: al terminar una historia se abre un PR hacia `develop`, y otro integrante lo revisa antes de unirlo.
 - ⚠️ Nunca subir la clave de Firebase (`.json`) ni la carpeta `target/`.
+
+## 🎯 Avance 1
+- 📄 Documentación: [`/docs`](docs/)
+- 🎨 Prototipo (Google AI Studio): [ver prototipo](PEGAR_LINK_PUBLICO)
+- 🎥 Video de presentación: [ver video](PEGAR_LINK_VIDEO)
 
 ## 📅 Entregas
 | Entrega | Semana | Estado |
