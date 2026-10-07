@@ -1,4 +1,4 @@
-# Canchas – Sistema de alquiler de canchas de fútbol
+  # ⚽ CanchaYa – Sistema de alquiler de canchas de fútbol
 
 **Proyecto Grupo 04 – SC-403 Desarrollo de Aplicaciones Web y Patrones**
 Universidad Fidélitas · III Cuatrimestre 2026
@@ -31,9 +31,9 @@ Los clientes pueden ver las canchas disponibles, reservar y pagar; el administra
 - **main**: solo versiones estables (entregas de avances). Nadie trabaja directo aquí.
 - **develop**: rama de integración, donde se une todo lo terminado.
 - **feature/HU-XX-descripcion**: una rama por historia de usuario, creada desde `develop`.
-  - Ejemplo: `feature/HU-03-crud-canchas`
+    - Ejemplo: `feature/HU-06-crud-canchas`
 - **Commits**: en español e iniciando con el ID de la historia.
-  - Ejemplo: `HU-03: agregar formulario de cancha`
+   - Ejemplo: `HU-06: agregar formulario de cancha`
 - **Pull requests**: al terminar una historia se abre un PR hacia `develop`, y otro integrante lo revisa antes de unirlo.
 - ⚠️ Nunca subir la clave de Firebase (`.json`) ni la carpeta `target/`.
 
