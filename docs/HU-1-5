@@ -1,0 +1,76 @@
+# Historias de usuario – Módulo Reservas del cliente (HU-1 a HU-5)
+
+**Responsable:** Juan Diego Murillo Ruiz
+
+| ID | Historia | Prioridad | Pantalla |
+|---|---|---|---|
+| HU-1 | Ver disponibilidad de una cancha | Alta | P-04 Detalle y disponibilidad |
+| HU-2 | Reservar una cancha | Alta | P-05 Confirmar reserva |
+| HU-3 | Pagar la reserva | Alta | P-06 Pago y comprobante |
+| HU-4 | Ver historial de reservas | Media | P-07 Mis reservas |
+| HU-  5 | Cancelar una reserva | Media | P-07 Mis reservas |
+
+---
+
+## HU-01 - Registrarse en el sistema
+
+**Como** cliente, **necesito** registrarme en el sistema, **para** poder realizar reservaciones.
+
+- **Prioridad:** Alta
+- **Pantalla:** P-01 Registro de usuario
+- **Criterios de aceptación:**
+  - Se permite ingresar nombre, correo y contraseña.
+  - El sistema valida que los campos obligatorios estén completos.
+  - Al completar el registro correctamente, el usuario puede acceder al sistema.
+
+---
+
+## HU-02 - Iniciar sesión
+
+**Como** usuario, **necesito** iniciar sesión, **para** acceder a las funciones correspondientes a mi perfil.
+
+- **Prioridad:** Alta
+- **Pantalla:** P-02 Inicio de sesión
+- **Criterios de aceptación:**
+  - El usuario debe ingresar correo y contraseña.
+  - El sistema valida que las credenciales sean correctas.
+  - Si los datos son válidos, se permite el acceso al sistema.
+
+---
+
+## HU-03 - Cerrar sesión
+
+**Como** usuario, **necesito** cerrar sesión, **para** proteger mi cuenta cuando termine de utilizar el sistema.
+
+- **Prioridad:** Media
+- **Pantalla:** P-03 Menú principal / Perfil
+- **Criterios de aceptación:**
+  - El usuario puede seleccionar la opción de cerrar sesión.
+  - La sesión activa se finaliza correctamente.
+  - El sistema redirige al usuario a la pantalla de inicio de sesión.
+
+---
+
+## HU-04 - Consultar y modificar perfil
+
+**Como** cliente, **necesito** consultar y modificar mis datos, **para** mantener mi información actualizada.
+
+- **Prioridad:** Media
+- **Pantalla:** P-04 Mi perfil
+- **Criterios de aceptación:**
+  - Se muestran los datos registrados del usuario.
+  - El usuario puede modificar su información básica.
+  - Los cambios realizados se guardan correctamente.
+
+---
+
+## HU-05 - Gestionar usuarios
+
+**Como** administrador, **necesito** gestionar los usuarios registrados, **para** mantener control sobre el acceso al sistema.
+
+- **Prioridad:** Alta
+- **Pantalla:** P-05 Gestión de usuarios
+- **Criterios de aceptación:**
+  - El administrador puede visualizar los usuarios registrados.
+  - Se permite editar la información de un usuario.
+  - El administrador puede desactivar un usuario cuando sea necesario.
