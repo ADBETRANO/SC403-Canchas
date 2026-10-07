@@ -1,6 +1,6 @@
 # 📁 Documentación – Proyecto Grupo 04
 
-CanchaYa – Sistema de alquiler de canchas de fútbol
+Golazo – Sistema de alquiler de canchas de fútbol
 
 ## ✅ Avance 1 – Historias de usuario y prototipo
 
