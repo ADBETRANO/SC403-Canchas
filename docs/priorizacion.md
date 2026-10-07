@@ -19,7 +19,11 @@ La prioridad de cada historia se determina considerando su importancia para el u
 |---|---|---|
 | HU-01 a HU-05 | Usuarios y acceso | Pendiente de consolidación |
 | HU-06 a HU-10 | Gestión de canchas | Pendiente de consolidación |
-| HU-11 a HU-15 | Reservas del cliente | Pendiente de consolidación |
+| HU-11 | Ver disponibilidad de una cancha | Alta |
+| HU-12 | Reservar una cancha | Alta |
+| HU-13 | Pagar la reserva | Alta |
+| HU-14 | Ver historial de reservas | Media |
+| HU-15 | Cancelar una reserva | Media |
 | HU-16 | Registrar cancha | Alta |
 | HU-17 | Editar cancha | Alta |
 | HU-18 | Gestionar disponibilidad de cancha | Alta |
@@ -30,4 +34,6 @@ La prioridad de cada historia se determina considerando su importancia para el u
 
 ## Consideraciones
 
-La priorización definitiva de las historias HU-01 a HU-15 se completará una vez que las historias elaboradas por los demás integrantes sean consolidadas en el repositorio. Esto permitirá mantener coherencia entre la descripción de cada historia, sus criterios de aceptación y su nivel de prioridad.
+La priorización definitiva de las historias HU-01 a HU-10 se completará una vez que las historias elaboradas por los demás integrantes sean consolidadas en el repositorio. Las historias HU-11 a HU-22 ya cuentan con su nivel de prioridad definido.
+
+Una vez incorporadas todas las historias, se realizará una revisión final del backlog para verificar la coherencia entre las funcionalidades, los criterios de aceptación y las prioridades asignadas.
