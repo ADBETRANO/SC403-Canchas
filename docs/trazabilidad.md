@@ -1,48 +1,60 @@
 # Trazabilidad de historias de usuario y pantallas
 
-**Proyecto:** CanchaYa – Sistema de alquiler de canchas de fútbol  
-**Responsable:** Integrante 4
+**Proyecto:** Golazo – Sistema de alquiler de canchas de fútbol
+**Responsable:** Emmanuel Alfaro Aguilar
 
 ## Objetivo
 
 La trazabilidad permite relacionar cada historia de usuario con la pantalla del sistema donde se implementará su funcionalidad. Esta relación facilita verificar que las funcionalidades definidas en el backlog estén representadas dentro del prototipo y del mapa de navegación del sistema.
 
-## Matriz de trazabilidad
+## Matriz de trazabilidad por historia
 
 | Historia | Funcionalidad | Pantalla asociada |
 |---|---|---|
-| HU-01 a HU-05 | Usuarios y acceso | Pendiente de consolidación |
-| HU-06 a HU-10 | Gestión de canchas | Pendiente de consolidación |
+| HU-01 | Registrarse en el sistema | P-02 Registro |
+| HU-02 | Iniciar sesión | P-01 Login |
+| HU-03 | Cerrar sesión | P-01 Login (menú) |
+| HU-04 | Consultar y modificar perfil | P-13 Mi perfil |
+| HU-05 | Gestionar usuarios | P-12 Usuarios |
+| HU-06 | Registrar cancha | P-08 Gestión de canchas |
+| HU-07 | Editar cancha | P-08 Gestión de canchas |
+| HU-08 | Desactivar cancha | P-08 Gestión de canchas |
+| HU-09 | Ver y filtrar catálogo de canchas | P-03 Catálogo de canchas |
+| HU-10 | Subir imágenes de una cancha | P-08 Gestión de canchas |
 | HU-11 | Ver disponibilidad de una cancha | P-04 Detalle de cancha y disponibilidad |
 | HU-12 | Reservar una cancha | P-05 Confirmar reserva |
 | HU-13 | Pagar la reserva | P-06 Pago y comprobante |
 | HU-14 | Ver historial de reservas | P-07 Mis reservas |
 | HU-15 | Cancelar una reserva | P-07 Mis reservas |
-| HU-16 | Registrar cancha | P-08 Gestión de canchas |
-| HU-17 | Editar cancha | P-08 Gestión de canchas |
-| HU-18 | Gestionar disponibilidad de cancha | P-09 Tarifas, horarios y bloqueos |
-| HU-19 | Registrar tarifa de cancha | P-09 Tarifas, horarios y bloqueos |
-| HU-20 | Modificar tarifa de cancha | P-09 Tarifas, horarios y bloqueos |
-| HU-21 | Gestionar reservas | P-10 Reservas del día |
-| HU-22 | Consultar reportes | P-11 Reportes y pagos |
+| HU-16 | Gestionar tipos de cancha | P-14 Tipos de cancha |
+| HU-17 | Definir horario de apertura y cierre | P-09 Tarifas y horarios |
+| HU-18 | Ver resumen de reservas del día | P-10 Reservas del día |
+| HU-19 | Registrar tarifa de cancha | P-09 Tarifas y horarios |
+| HU-20 | Modificar tarifa de cancha | P-09 Tarifas y horarios |
+| HU-21 | Consultar reservas | P-10 Reservas del día |
+| HU-22 | Consultar reportes | P-11 Reportes |
 
-## Referencia de pantallas
+## Matriz de trazabilidad por pantalla
 
-Las pantallas utilizadas para establecer la trazabilidad corresponden al mapa de navegación definido para el proyecto CanchaYa.
-
-- **P-04:** Detalle de cancha y disponibilidad.
-- **P-05:** Confirmar reserva.
-- **P-06:** Pago y comprobante.
-- **P-07:** Mis reservas.
-- **P-08:** Gestión de canchas.
-- **P-09:** Tarifas, horarios y bloqueos.
-- **P-10:** Reservas del día.
-- **P-11:** Reportes y pagos.
+| Pantalla | Nombre | Historias que cubre | Responsable |
+|---|---|---|---|
+| P-01 | Login | HU-02, HU-03 | Juan Diego Murillo Ruiz |
+| P-02 | Registro | HU-01 | Juan Diego Murillo Ruiz |
+| P-03 | Catálogo de canchas | HU-09 | Daniel Murillo Zeledón |
+| P-04 | Detalle de cancha y disponibilidad | HU-11 | Carlos Adrián Betrano Valverde |
+| P-05 | Confirmar reserva | HU-12 | Carlos Adrián Betrano Valverde |
+| P-06 | Pago y comprobante | HU-13 | Carlos Adrián Betrano Valverde |
+| P-07 | Mis reservas | HU-14, HU-15 | Carlos Adrián Betrano Valverde |
+| P-08 | Gestión de canchas (admin) | HU-06, HU-07, HU-08, HU-10 | Daniel Murillo Zeledón |
+| P-09 | Tarifas y horarios (admin) | HU-17, HU-19, HU-20 | Emmanuel Alfaro Aguilar |
+| P-10 | Reservas del día (admin) | HU-18, HU-21 | Emmanuel Alfaro Aguilar |
+| P-11 | Reportes (admin) | HU-22 | Emmanuel Alfaro Aguilar |
+| P-12 | Usuarios (admin) | HU-05 | Juan Diego Murillo Ruiz |
+| P-13 | Mi perfil | HU-04 | Juan Diego Murillo Ruiz |
+| P-14 | Tipos de cancha (admin) | HU-16 | Emmanuel Alfaro Aguilar |
 
 ## Consideraciones
 
-Las historias HU-01 a HU-10 se encuentran pendientes de consolidación en esta matriz hasta que sus respectivos archivos sean incorporados al repositorio. Una vez disponibles, se revisará cada historia individualmente y se asociará con la pantalla correspondiente del mapa de navegación.
-
-Las historias HU-11 a HU-15 fueron relacionadas utilizando las pantallas definidas en su documento de historias de usuario y verificadas contra el mapa de navegación.
-
-Las historias HU-16 a HU-22 fueron relacionadas con las pantallas administrativas correspondientes según las funcionalidades definidas y la estructura establecida en el mapa de navegación.
+- Las 22 historias tienen al menos una pantalla asociada y las 14 pantallas del prototipo tienen al menos una historia.
+- Los códigos y nombres de pantalla coinciden con el mapa de navegación (`mapa-navegacion.png`) y con el prototipo en Google AI Studio.
+- Las historias HU-16, HU-17 y HU-18 se redefinieron para no duplicar las historias de gestión de canchas (HU-06 a HU-08) y para cubrir las pantallas P-14, P-09 y P-10.
