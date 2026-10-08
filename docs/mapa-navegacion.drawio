@@ -1,0 +1,129 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.6 Chrome/140.0.7339.249 Electron/38.8.0 Safari/537.36" version="29.3.6">
+  <diagram id="mapa" name="Mapa de navegación">
+    <mxGraphModel dx="2946" dy="1249" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="650" pageHeight="950" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="titulo" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=20;fontStyle=1;" value="Mapa de navegación – Sistema de alquiler de canchas (Grupo 04)" vertex="1">
+          <mxGeometry height="40" width="630" x="335" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="zV" parent="1" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;dashed=1;fillColor=none;verticalAlign=top;align=left;spacingLeft=12;spacingTop=6;fontStyle=1;fontSize=15;strokeColor=#82b366;fontColor=#3d6b2e;" value="VISITANTE (sin cuenta)" vertex="1">
+          <mxGeometry height="420" width="270" x="20" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="zC" parent="1" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;dashed=1;fillColor=none;verticalAlign=top;align=left;spacingLeft=12;spacingTop=6;fontStyle=1;fontSize=15;strokeColor=#6c8ebf;fontColor=#2b4f86;" value="CLIENTE" vertex="1">
+          <mxGeometry height="420" width="910" x="320" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="zA" parent="1" style="rounded=1;arcSize=3;whiteSpace=wrap;html=1;dashed=1;fillColor=none;verticalAlign=top;align=left;spacingLeft=12;spacingTop=6;fontStyle=1;fontSize=15;strokeColor=#d79b00;fontColor=#9a6400;" value="ADMINISTRADOR" vertex="1">
+          <mxGeometry height="320" width="1080" x="110" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="p03v" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" value="P-03 Catálogo de canchas&lt;br&gt;(público)" vertex="1">
+          <mxGeometry height="64" width="200" x="55" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="p01" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" value="&lt;b&gt;P-01 Login&lt;/b&gt;" vertex="1">
+          <mxGeometry height="64" width="200" x="55" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="p02" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" value="P-02 Registro" vertex="1">
+          <mxGeometry height="64" width="200" x="55" y="395" as="geometry" />
+        </mxCell>
+        <mxCell id="p03c" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" value="P-03 Catálogo de canchas" vertex="1">
+          <mxGeometry height="64" width="200" x="360" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="p04" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" value="P-04 Detalle de cancha&lt;br&gt;y disponibilidad" vertex="1">
+          <mxGeometry height="64" width="200" x="660" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="p05" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" value="P-05 Confirmar reserva" vertex="1">
+          <mxGeometry height="64" width="200" x="990" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="p13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" value="P-13 Mi perfil" vertex="1">
+          <mxGeometry height="64" width="200" x="360" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="p07" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" value="P-07 Mis reservas" vertex="1">
+          <mxGeometry height="64" width="200" x="660" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="p06" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" value="P-06 Pago y comprobante" vertex="1">
+          <mxGeometry height="64" width="200" x="990" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="menuA" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="&lt;b&gt;Menú del administrador&lt;/b&gt;" vertex="1">
+          <mxGeometry height="64" width="200" x="540" y="565" as="geometry" />
+        </mxCell>
+        <mxCell id="p08" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="P-08 Gestión de canchas" vertex="1">
+          <mxGeometry height="64" width="160" x="120" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="p14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="P-14 Tipos de cancha" vertex="1">
+          <mxGeometry height="64" width="160" x="296" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="p09" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="P-09 Tarifas, horarios&lt;br&gt;y bloqueos" vertex="1">
+          <mxGeometry height="64" width="160" x="472" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="p10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="P-10 Reservas del día" vertex="1">
+          <mxGeometry height="64" width="160" x="648" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="p11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="P-11 Reportes y pagos" vertex="1">
+          <mxGeometry height="64" width="160" x="824" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="p12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;" value="P-12 Usuarios" vertex="1">
+          <mxGeometry height="64" width="160" x="1000" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="p03v" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;fontSize=11;labelBackgroundColor=#ffffff;" target="p01" value="Iniciar sesión">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="p01" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.25;exitY=1;entryX=0.25;entryY=0;" target="p02" value="Crear cuenta">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="p02" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.75;exitY=0;entryX=0.75;entryY=1;" target="p01" value="Cuenta creada">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="p01" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="p03c" value="Rol CLIENTE">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="p03c" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;fontSize=11;labelBackgroundColor=#ffffff;" target="p04" value="Ver cancha">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="p04" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;fontSize=11;labelBackgroundColor=#ffffff;" target="p05" value="Elegir fecha y hora">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="p05" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;fontSize=11;labelBackgroundColor=#ffffff;" target="p06" value="Confirmar">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="p06" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;fontSize=11;labelBackgroundColor=#ffffff;" target="p07" value="Ver mis reservas">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="p03c" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;fontSize=11;labelBackgroundColor=#ffffff;" target="p13" value="Menú: Mi perfil">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="p07" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.5;exitY=0;entryX=0.5;entryY=1;dashed=1;" target="p04" value="Reservar de nuevo">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="p01" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#d79b00;" target="menuA" value="Rol ADMIN">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="30" y="292" />
+              <mxPoint x="30" y="597" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="menuA" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#d79b00;" target="p08" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="menuA" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#d79b00;" target="p14" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="menuA" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#d79b00;" target="p09" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" edge="1" parent="1" source="menuA" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#d79b00;" target="p10" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" edge="1" parent="1" source="menuA" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#d79b00;" target="p11" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" edge="1" parent="1" source="menuA" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;html=1;endArrow=block;endFill=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#d79b00;" target="p12" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nota" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontStyle=2;" value="Desde cualquier pantalla, el menú superior permite &lt;b&gt;Cerrar sesión → P-01 Login&lt;/b&gt;. El cliente también accede a &lt;b&gt;Mis reservas&lt;/b&gt; y &lt;b&gt;Mi perfil&lt;/b&gt; desde el menú." vertex="1">
+          <mxGeometry height="40" width="1080" x="100" y="860" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
