@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{general/fragmentos :: head}"></head>
+    <body>
+        <header th:replace="~{general/fragmentos :: header}"></header>
+        <div class="admin-golazo">
+            <aside th:replace="~{general/fragmentos :: menuAdmin('tipos')}"></aside>
+            <main class="admin-contenido">
+                <section th:replace="~{tipoCancha/fragmentos :: formulario}"></section>
+                <section th:replace="~{tipoCancha/fragmentos :: listado}"></section>
+            </main>
+        </div>
+
+        <section th:replace="~{general/fragmentos :: confirmarEliminar(@{/tipoCancha/eliminar},'idTipoCancha')}"></section>
+        <section th:replace="~{general/fragmentos :: mostrarToast}"></section>
+        <footer th:replace="~{general/fragmentos :: footer}"></footer>
+
+        <script th:src="@{/js/modulos/tipoCancha.js}"></script>
+    </body>
+</html>

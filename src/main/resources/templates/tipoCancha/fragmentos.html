@@ -1,0 +1,93 @@
+<!-- 1 Fragmento con formulario unificado para agregar y modificar tipo de cancha -->
+<section th:fragment="formulario">
+    <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 border-bottom pb-3 mb-3">
+        <div>
+            <span class="codigo-pantalla">P-14 — Tipos de cancha (admin)</span>
+            <h3 class="titulo-pagina">[[#{tipoCancha.titulo}]]</h3>
+            <div class="subtitulo-pagina">[[#{tipoCancha.subtitulo}]]</div>
+        </div>
+        <button type="button" class="btn btn-golazo btn-sm"
+                data-bs-toggle="modal" data-bs-target="#tipoCanchaModal"
+                data-modo="agregar" th:data-titulo="#{tipoCancha.agregar}">
+            <i class="fa-solid fa-plus"></i> [[#{tipoCancha.agregar}]]
+        </button>
+    </div>
+    <div class="modal fade" id="tipoCanchaModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="tipoCanchaForm" method="post" th:action="@{/tipoCancha/guardar}">
+                    <div class="modal-header" id="tipoCanchaModalHeader">
+                        <h5 class="modal-title" id="tipoCanchaModalTitulo"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="tipoCanchaId" name="idTipoCancha"/>
+                        <div class="mb-3">
+                            <label for="tipoCanchaDescripcion">[[#{tipoCancha.descripcion}]]</label>
+                            <input type="text" id="tipoCanchaDescripcion" name="descripcion" class="form-control" maxlength="30" required/>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" id="tipoCanchaActivo" name="activo" class="form-check-input"/>
+                            <label for="tipoCanchaActivo" class="form-check-label">[[#{tipoCancha.activo}]]</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="fa-solid fa-xmark"></i> [[#{accion.cerrar}]]
+                        </button>
+                        <button type="submit" class="btn btn-golazo">
+                            <i class="fa-solid fa-floppy-disk"></i> [[#{accion.guardar}]]
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 2 Fragmento con las tarjetas de los tipos de cancha -->
+<section th:fragment="listado">
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+        <div class="col" th:each="t : ${tiposCancha}">
+            <div class="card-golazo h-100 d-flex flex-column">
+                <div th:replace="~{general/fragmentos :: campo(null, ${t.descripcion}, ${t.descripcion})}"></div>
+                <div class="p-3 d-flex flex-column flex-grow-1">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <div class="tipo-golazo">[[#{tipoCancha.modalidad}]]</div>
+                            <h5 class="fw-bold">[[${t.descripcion}]]</h5>
+                        </div>
+                        <div>
+                            <span th:if="${t.activo}" class="badge bg-success-subtle text-success border border-success-subtle">[[#{tipoCancha.habilitado}]]</span>
+                            <span th:unless="${t.activo}" class="badge bg-secondary-subtle text-secondary border">[[#{estado.inactivo}]]</span>
+                        </div>
+                    </div>
+                    <div class="border rounded p-2 small mb-3" style="background-color: #fafafa;">
+                        <i class="fa-solid fa-layer-group text-golazo"></i> [[${t.canchas.size()}]] [[#{tipoCancha.canchasRegistradas}]]
+                    </div>
+                    <div class="d-flex gap-2 mt-auto">
+                        <button type="button" class="btn btn-sm btn-outline-secondary flex-fill"
+                                data-bs-toggle="modal" data-bs-target="#tipoCanchaModal"
+                                data-modo="editar"
+                                th:data-titulo="#{accion.actualizar}"
+                                th:data-id="${t.idTipoCancha}"
+                                th:data-descripcion="${t.descripcion}"
+                                th:data-activo="${t.activo}">
+                            <i class="fa-solid fa-pencil"></i> [[#{accion.actualizar}]]
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-warning"
+                                data-bs-toggle="modal" data-bs-target="#confirmModal"
+                                th:data-bs-id="${t.idTipoCancha}"
+                                th:data-bs-descripcion="${t.descripcion}">
+                            <i class="fa-regular fa-trash-can"></i> [[#{accion.eliminar}]]
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center p-4" th:if="${tiposCancha == null or tiposCancha.empty}">
+        <span>[[#{lista.vacia}]]</span>
+    </div>
+    <div class="subtitulo-pagina mt-3">[[#{lista.total}]]: [[${totalTiposCancha}]]</div>
+</section>
