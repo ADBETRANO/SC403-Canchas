@@ -1,0 +1,123 @@
+<!-- 1 Fragmento con formulario unificado para agregar y modificar cancha -->
+<section th:fragment="formulario">
+    <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 border-bottom pb-3 mb-3">
+        <div>
+            <span class="codigo-pantalla">P-08 — Gestión de Canchas (admin)</span>
+            <h3 class="titulo-pagina">[[#{cancha.titulo}]]</h3>
+            <div class="subtitulo-pagina">[[#{cancha.subtitulo}]]</div>
+        </div>
+        <button type="button" class="btn btn-golazo btn-sm"
+                data-bs-toggle="modal" data-bs-target="#canchaModal"
+                data-modo="agregar" th:data-titulo="#{cancha.agregar}">
+            <i class="fa-solid fa-plus"></i> [[#{cancha.agregar}]]
+        </button>
+    </div>
+    <div class="modal fade" id="canchaModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form id="canchaForm" method="post" th:action="@{/cancha/guardar}" enctype="multipart/form-data">
+                    <div class="modal-header" id="canchaModalHeader">
+                        <h5 class="modal-title" id="canchaModalTitulo"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="canchaId" name="idCancha"/>
+                        <input type="hidden" id="canchaRutaImagen" name="rutaImagen"/>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="canchaNombre">[[#{cancha.nombre}]]</label>
+                                <input type="text" id="canchaNombre" name="nombre" class="form-control" maxlength="50" required/>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="canchaTipo">[[#{cancha.tipo}]]</label>
+                                <select id="canchaTipo" name="tipoCancha.idTipoCancha" class="form-select" required>
+                                    <option th:each="t : ${tiposCancha}" th:value="${t.idTipoCancha}" th:text="${t.descripcion}"></option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="canchaSuperficie">[[#{cancha.superficie}]]</label>
+                                <select id="canchaSuperficie" name="superficie" class="form-select">
+                                    <option value="Sintética">Sintética</option>
+                                    <option value="Natural">Natural</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="canchaCapacidad">[[#{cancha.capacidad}]]</label>
+                                <input type="number" id="canchaCapacidad" name="capacidad" class="form-control" min="1" required/>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label for="canchaDescripcion">[[#{cancha.descripcion}]]</label>
+                                <textarea id="canchaDescripcion" name="descripcion" class="form-control" rows="3"></textarea>
+                            </div>
+                            <div class="col-md-6 mb-3 form-check ms-2">
+                                <input type="checkbox" id="canchaActivo" name="activo" class="form-check-input"/>
+                                <label for="canchaActivo" class="form-check-label">[[#{cancha.activo}]]</label>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label for="canchaImagenFile">[[#{cancha.imagen}]]</label>
+                                <input type="file" id="canchaImagenFile" name="imagenFile" class="form-control" accept="image/*"/>
+                                <img id="canchaPreview" class="d-none mt-2" alt="Imagen" height="200"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="fa-solid fa-xmark"></i> [[#{accion.cerrar}]]
+                        </button>
+                        <button type="submit" class="btn btn-golazo">
+                            <i class="fa-solid fa-floppy-disk"></i> [[#{accion.guardar}]]
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 2 Fragmento para el listado -->
+<section th:fragment="listado">
+    <div class="card-golazo">
+        <div th:if="${canchas != null and !canchas.empty}" class="table-responsive">
+            <table class="table table-hover tabla-golazo mb-0">
+                <thead><tr><th>ID</th><th>[[#{cancha.nombre}]]</th><th>[[#{cancha.tipo}]]</th><th>[[#{tarifa.precioHora}]]</th><th>[[#{cancha.estado}]]</th><th class="text-end">[[#{reserva.acciones}]]</th></tr></thead>
+                <tbody>
+                    <tr th:each="c : ${canchas}">
+                        <td class="id-golazo">cancha-[[${c.idCancha}]]</td>
+                        <td><div class="fw-semibold">[[${c.nombre}]]</div>
+                            <div class="subtitulo-pagina text-truncate" style="max-width: 300px;">[[${c.descripcion}]]</div></td>
+                        <td class="fw-bold">[[${c.tipoCancha.descripcion}]]</td>
+                        <td class="precio-golazo"><span th:each="t : ${c.tarifas}" th:if="${t.vigente and t.tipoTarifa == 'Diurna'}">₡[[${t.precioHora.intValue()}]]</span></td>
+                        <td><span th:if="${c.activo}" class="badge rounded-pill bg-success-subtle text-success border border-success-subtle"><i class="fa-regular fa-circle-check"></i> [[#{cancha.estado.activa}]]</span>
+                            <span th:unless="${c.activo}" class="badge rounded-pill bg-secondary-subtle text-secondary border">[[#{cancha.estado.inactiva}]]</span></td>
+                        <td class="text-end text-nowrap">
+                                <button type="button" class="btn btn-sm btn-link text-secondary" title="Editar"
+                                        data-bs-toggle="modal" data-bs-target="#canchaModal"
+                                        data-modo="editar"
+                                        th:data-titulo="#{accion.actualizar}"
+                                        th:data-id="${c.idCancha}"
+                                        th:data-nombre="${c.nombre}"
+                                        th:data-tipo="${c.tipoCancha.idTipoCancha}"
+                                        th:data-superficie="${c.superficie}"
+                                        th:data-capacidad="${c.capacidad}"
+                                        th:data-descripcion="${c.descripcion}"
+                                        th:data-activo="${c.activo}"
+                                        th:data-imagen="${c.rutaImagen != null ? c.rutaImagen : ''}">
+                                    <i class="fa-solid fa-pencil"></i>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-link text-danger" title="Eliminar"
+                                        data-bs-toggle="modal" data-bs-target="#confirmModal"
+                                        th:data-bs-id="${c.idCancha}"
+                                        th:data-bs-descripcion="${c.nombre}">
+                                    <i class="fa-regular fa-trash-can"></i>
+                                </button>
+                            </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center p-4" th:if="${canchas == null or canchas.empty}">
+            <span>[[#{lista.vacia}]]</span>
+        </div>
+        <div class="border-top px-3 py-2 subtitulo-pagina">[[#{lista.total}]]: [[${totalCanchas}]]</div>
+    </div>
+</section>
