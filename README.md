@@ -59,11 +59,11 @@ Los clientes pueden ver las canchas disponibles, reservar y pagar (tarjeta, SINP
 ## 🚧 Avance 2 – Estado de las historias
 | Turno | Módulo | Responsable | Historias | Estado |
 |---|---|---|---|---|
-| Turno 1 | Proyecto base y reservas y pagos | Carlos Adrián | HU-11, HU-12, HU-13, HU-14, HU-15 | ✅ |
-| Turno 2-4 | Canchas, tipos de cancha, catálogo e imágenes (Firebase) | Daniel | HU-06, HU-07, HU-08, HU-09, HU-10, HU-16 | ⬜ Pendiente |
-| Turno 2-4 | Horarios y tarifas | Emmanuel | HU-17, HU-19, HU-20 | ⬜ Pendiente |
-| Turno 2-4 | Usuarios, registro y reservas del día | Juan Diego | HU-01, HU-05, HU-18, HU-21 | ⬜ Pendiente |
-| Después | Inicio y cierre de sesión | Juan Diego | HU-02, HU-03 | ⏳ cuando se vea Spring Security |
+| 1 | Proyecto base y reservas y pagos | Integrante 1 (Carlos Adrián) | HU-11, HU-12, HU-13, HU-14, HU-15 | ✅ |
+| 2 | Módulo A: canchas, tipos de cancha, catálogo e imágenes (Firebase) | Integrante 2 | HU-06, HU-07, HU-08, HU-09, HU-10, HU-16 | ⬜ Pendiente |
+| 3 | Módulo B: horarios y tarifas | Integrante 3 | HU-17, HU-19, HU-20 | ⬜ Pendiente |
+| 4 | Módulo C: usuarios, registro y reservas del día | Integrante 4 | HU-01, HU-05, HU-18, HU-21 | ⬜ Pendiente |
+| Después | Inicio y cierre de sesión | Integrante 4 | HU-02, HU-03 | ⏳ cuando se vea Spring Security |
 
 **Meta:** 18 de 22 historias (82 %).
 
