@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{general/fragmentos :: head}"></head>
+    <body>
+        <header th:replace="~{general/fragmentos :: header}"></header>
+
+        <!-- HU-13: pago de la reserva -->
+        <div class="container py-4" style="max-width: 500px;">
+            <div class="text-center"><span class="codigo-pantalla">P-06 — Pago y comprobante</span></div>
+            <h2 class="titulo-pagina text-center">[[#{reserva.pagoTitulo}]]</h2>
+            <p class="subtitulo-pagina text-center">[[#{reserva.pagoTexto}]]</p>
+            <div class="card-golazo p-4">
+                <form method="post" th:action="@{/reserva/pagar}" th:if="${reserva.estado == 'Pendiente'}">
+                    <input type="hidden" name="idReserva" th:value="${reserva.idReserva}"/>
+                    <div class="small mb-2">[[#{reserva.metodo}]]:</div>
+                    <div class="row g-2 mb-3">
+                        <div class="col-4">
+                            <input type="radio" class="btn-check" name="metodo" id="metodoTarjeta" value="Tarjeta" checked/>
+                            <label class="metodo-golazo small" for="metodoTarjeta"><div class="mb-1"><i class="fa-regular fa-credit-card"></i></div>Tarjeta</label>
+                        </div>
+                        <div class="col-4">
+                            <input type="radio" class="btn-check" name="metodo" id="metodoSinpe" value="SINPE Móvil"/>
+                            <label class="metodo-golazo small" for="metodoSinpe"><div class="mb-1"><i class="fa-solid fa-mobile-screen"></i></div>SINPE Móvil</label>
+                        </div>
+                        <div class="col-4">
+                            <input type="radio" class="btn-check" name="metodo" id="metodoEfectivo" value="Efectivo"/>
+                            <label class="metodo-golazo small" for="metodoEfectivo"><div class="mb-1"><i class="fa-solid fa-money-bill"></i></div>Efectivo</label>
+                        </div>
+                    </div>
+                    <div class="border rounded p-3 mb-3 d-flex justify-content-between align-items-center" style="background-color: #fafafa;">
+                        <div>
+                            <div class="small">[[#{reserva.montoReserva}]]</div>
+                            <div class="id-golazo" style="font-size: 0.7rem;">[[${reserva.cancha.nombre}]] ([[${reserva.fecha}]] · [[${reserva.horaInicio}]] hrs)</div>
+                            <div class="id-golazo" style="font-size: 0.7rem;">[[#{reserva.cliente}]]: [[${reserva.usuario.nombre + ' ' + reserva.usuario.apellidos}]]</div>
+                        </div>
+                        <span class="precio-golazo fs-5">₡[[${reserva.montoTotal.intValue()}]]</span>
+                    </div>
+                    <p class="small text-muted"><i class="fa-solid fa-shield-halved text-golazo"></i> [[#{reserva.notaPago}]]</p>
+                    <button type="submit" class="btn btn-golazo w-100"><i class="fa-solid fa-lock"></i> [[#{reserva.pagar}]]</button>
+                </form>
+                <div th:unless="${reserva.estado == 'Pendiente'}" class="text-center small">[[#{reserva.error06}]]</div>
+            </div>
+        </div>
+
+        <section th:replace="~{general/fragmentos :: mostrarToast}"></section>
+        <footer th:replace="~{general/fragmentos :: footer}"></footer>
+    </body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{general/fragmentos :: head}"></head>
+    <body>
+        <header th:replace="~{general/fragmentos :: header}"></header>
+
+        <div class="container contenido-golazo py-4">
+            <a th:href="@{/}" class="small text-dark text-decoration-none"><i class="fa-solid fa-arrow-left"></i> [[#{reserva.volverCatalogo}]]</a>
+
+            <!-- Si todavía no se eligió cancha, se muestra la lista para escoger una -->
+            <div class="card-golazo p-4 mt-3" th:if="${cancha == null}">
+                <div><span class="codigo-pantalla">P-04 — Detalle de cancha y disponibilidad</span></div>
+                <h5 class="fw-bold"><i class="fa-regular fa-calendar text-golazo"></i> [[#{reserva.consultar}]]</h5>
+                <form method="get" th:action="@{/reserva/disponibilidad}" class="row g-2 align-items-end">
+                    <div class="col-md-6">
+                        <label for="idCancha" class="small">[[#{reserva.cancha}]]</label>
+                        <select id="idCancha" name="idCancha" class="form-select" required>
+                            <option th:each="c : ${canchas}" th:value="${c.idCancha}"
+                                    th:text="${c.nombre + ' (' + c.tipoCancha.descripcion + ')'}"></option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="fecha" class="small">[[#{reserva.fecha}]]</label>
+                        <input type="date" id="fecha" name="fecha" class="form-control" th:value="${fecha}" th:min="${hoy}" required/>
+                    </div>
+                    <div class="col-md-3">
+                        <button type="submit" class="btn btn-golazo w-100"><i class="fa-solid fa-magnifying-glass"></i> [[#{accion.buscar}]]</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- HU-11: detalle de la cancha -->
+            <div class="card-golazo overflow-hidden mt-3" th:if="${cancha != null}">
+                <div class="row g-0">
+                    <div class="col-md-5 p-3 detalle-campo" style="background-color: #171717;">
+                        <div th:replace="~{general/fragmentos :: campo(${cancha.rutaImagen}, ${cancha.tipoCancha.descripcion}, ${cancha.nombre})}"></div>
+                    </div>
+                    <div class="col-md-7 p-4">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <div><span class="codigo-pantalla">P-04 — Detalle de cancha y disponibilidad</span> <span class="tipo-golazo">· [[${cancha.tipoCancha.descripcion}]]</span></div>
+                                <h3 class="fw-bold">[[${cancha.nombre}]]</h3>
+                            </div>
+                            <div class="bg-golazo-claro border border-success-subtle rounded p-2 text-center" th:if="${precioDiurno != null}">
+                                <div class="subtitulo-pagina">[[#{reserva.tarifaBase}]]</div>
+                                <div class="precio-golazo fs-5">₡[[${precioDiurno.intValue()}]]</div>
+                                <div class="subtitulo-pagina">[[#{reserva.porHoraJuego}]]</div>
+                            </div>
+                        </div>
+                        <p class="small mt-2">[[${cancha.descripcion}]]</p>
+                        <div class="row g-2 small">
+                            <div class="col-6 col-lg-3"><div class="border rounded p-2 h-100">
+                                    <div class="subtitulo-pagina">[[#{cancha.capacidad}]]</div>
+                                    <i class="fa-solid fa-users"></i> [[${cancha.capacidad}]] [[#{index.capacidad}]]</div></div>
+                            <div class="col-6 col-lg-3"><div class="border rounded p-2 h-100">
+                                    <div class="subtitulo-pagina">[[#{cancha.superficie}]]</div>[[${cancha.superficie}]]</div></div>
+                            <div class="col-6 col-lg-3"><div class="border rounded p-2 h-100">
+                                    <div class="subtitulo-pagina">[[#{horario.dia}]]</div>[[${tipoDia}]]</div></div>
+                            <div class="col-6 col-lg-3"><div class="border rounded p-2 h-100">
+                                    <div class="subtitulo-pagina">[[#{reserva.horario}]]</div>
+                                    <span th:if="${horario != null}"><i class="fa-regular fa-clock"></i> [[${horario.horaApertura}]] - [[${horario.horaCierre}]]</span>
+                                    <span th:if="${horario == null}">-</span></div></div>
+                        </div>
+                        <div class="border rounded p-2 small mt-3" th:if="${precioNocturno != null}">
+                            <i class="fa-solid fa-circle-info text-golazo"></i> [[#{reserva.notaNocturna}]] <b>₡[[${precioNocturno.intValue()}]]</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HU-11: horarios disponibles en bloques de 1 hora -->
+            <div class="card-golazo p-4 mt-4" th:if="${cancha != null}">
+                <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 border-bottom pb-3">
+                    <div>
+                        <h5 class="fw-bold mb-0"><i class="fa-regular fa-calendar text-golazo"></i> [[#{reserva.consultaHorarios}]]</h5>
+                        <div class="subtitulo-pagina">[[#{reserva.seleccioneBloque}]]</div>
+                    </div>
+                    <form method="get" th:action="@{/reserva/disponibilidad}" class="d-flex flex-wrap gap-2">
+                        <input type="hidden" name="idCancha" th:value="${cancha.idCancha}"/>
+                        <a th:class="${fecha == hoy} ? 'btn btn-sm btn-golazo' : 'btn btn-sm btn-blanco'" th:href="@{/reserva/disponibilidad(idCancha=${cancha.idCancha},fecha=${hoy})}">[[#{reserva.hoy}]]</a>
+                        <a th:class="${fecha == manana} ? 'btn btn-sm btn-golazo' : 'btn btn-sm btn-blanco'" th:href="@{/reserva/disponibilidad(idCancha=${cancha.idCancha},fecha=${manana})}">[[#{reserva.manana}]]</a>
+                        <a th:class="${fecha == pasado} ? 'btn btn-sm btn-golazo' : 'btn btn-sm btn-blanco'" th:href="@{/reserva/disponibilidad(idCancha=${cancha.idCancha},fecha=${pasado})}">[[#{reserva.pasado}]]</a>
+                        <input type="date" name="fecha" class="form-control form-control-sm" style="width: 150px;" th:value="${fecha}" th:min="${hoy}" required/>
+                        <button type="submit" class="btn btn-sm btn-golazo"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </div>
+                <div class="d-flex justify-content-between small my-3">
+                    <span><i class="fa-solid fa-circle text-golazo"></i> [[#{reserva.disponibles}]]: <b>[[${disponibles}]]</b>
+                        &nbsp; <i class="fa-solid fa-circle text-secondary"></i> [[#{reserva.ocupados}]]: <b>[[${ocupados}]]</b></span>
+                    <span class="id-golazo">[[#{reserva.fecha}]]: [[${fecha}]]</span>
+                </div>
+                <div th:if="${espacios.empty}" class="text-center p-3">[[#{reserva.sinHorario}]]</div>
+                <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-xl-7 g-2">
+                    <div class="col" th:each="e : ${espacios}">
+                        <!-- Espacio libre -->
+                        <div th:if="${e.disponible}" class="espacio-golazo">
+                            <div class="d-flex justify-content-between">
+                                <span class="hora-golazo">[[${e.inicio}]]</span>
+                                <i th:if="${e.tipoTarifa == 'Nocturna'}" class="fa-regular fa-moon text-warning"></i>
+                            </div>
+                            <div class="subtitulo-pagina">[[#{reserva.hasta}]] [[${e.fin}]]</div>
+                            <div class="small text-golazo my-1"><i class="fa-regular fa-circle-check"></i> [[#{reserva.disponible}]]</div>
+                            <div class="precio-golazo small mb-2">₡[[${e.precio.intValue()}]]</div>
+                            <a class="btn btn-sm btn-golazo w-100"
+                               th:href="@{/reserva/nueva(idCancha=${cancha.idCancha},fecha=${fecha},horaInicio=${e.inicio})}">[[#{reserva.reservar}]]</a>
+                        </div>
+                        <!-- Espacio ocupado o que ya pasó -->
+                        <div th:unless="${e.disponible}" class="espacio-golazo espacio-ocupado">
+                            <span class="hora-golazo">[[${e.inicio}]]</span>
+                            <div class="subtitulo-pagina">[[#{reserva.hasta}]] [[${e.fin}]]</div>
+                            <div class="small my-1"><i class="fa-regular fa-circle-xmark"></i> [[#{reserva.ocupado}]]</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section th:replace="~{general/fragmentos :: mostrarToast}"></section>
+        <footer th:replace="~{general/fragmentos :: footer}"></footer>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<!-- 1 Fragmento con la tabla de reservas. Si cancelar es true se muestran las acciones del cliente (pagar y cancelar) -->
+<section th:fragment="tabla(cancelar)">
+    <div th:if="${reservas != null and !reservas.empty}" class="table-responsive">
+        <table class="table table-hover tabla-golazo mb-0">
+            <thead><tr><th>[[#{reserva.codigo}]]</th>
+                    <th>[[#{reserva.cancha}]]</th>
+                    <th th:unless="${cancelar}">[[#{reserva.cliente}]]</th>
+                    <th>[[#{reserva.tipo}]]</th>
+                    <th>[[#{reserva.fecha}]]</th>
+                    <th>[[#{reserva.horario}]]</th>
+                    <th>[[#{reserva.monto}]]</th>
+                    <th>[[#{reserva.estado}]]</th>
+                    <th>[[#{reserva.pago}]]</th>
+                    <th th:if="${cancelar}" class="text-center">[[#{reserva.acciones}]]</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="r : ${reservas}">
+                    <td class="id-golazo fw-bold text-dark">RES-[[${r.idReserva}]]</td>
+                    <td>[[${r.cancha.nombre}]]</td>
+                    <td th:unless="${cancelar}">[[${r.usuario.nombre + ' ' + r.usuario.apellidos}]]</td>
+                    <td>[[${r.cancha.tipoCancha.descripcion}]]</td>
+                    <td class="id-golazo">[[${r.fecha}]]</td>
+                    <td class="id-golazo">[[${r.horaInicio}]] - [[${r.horaFin}]]</td>
+                    <td class="precio-golazo">₡[[${r.montoTotal.intValue()}]]</td>
+                    <td><span th:if="${r.estado == 'Confirmada'}" class="badge rounded-pill bg-success-subtle text-success border border-success-subtle"><i class="fa-regular fa-circle-check"></i> [[${r.estado}]]</span>
+                        <span th:if="${r.estado == 'Pendiente'}" class="badge rounded-pill bg-warning-subtle text-warning-emphasis border border-warning-subtle"><i class="fa-regular fa-clock"></i> [[${r.estado}]]</span>
+                        <span th:if="${r.estado == 'Cancelada'}" class="badge rounded-pill bg-danger-subtle text-danger border border-danger-subtle"><i class="fa-regular fa-circle-xmark"></i> [[${r.estado}]]</span></td>
+                    <td class="small"><span th:if="${r.pago != null}">[[${r.pago.metodo}]] · [[${r.pago.estado}]]</span>
+                        <span th:if="${r.pago == null}" class="text-muted">-</span></td>
+                    <td th:if="${cancelar}" class="text-center text-nowrap">
+                        <a th:if="${r.estado == 'Pendiente'}" class="btn btn-sm btn-light"
+                           th:href="@{/reserva/pago/{id}(id=${r.idReserva})}"><i class="fa-regular fa-credit-card"></i> [[#{reserva.pagar}]]</a>
+                        <form th:if="${r.estado != 'Cancelada'}" method="post" th:action="@{/reserva/cancelar}" class="d-inline">
+                            <input type="hidden" name="idReserva" th:value="${r.idReserva}"/>
+                            <input type="hidden" name="idUsuario" th:value="${r.usuario.idUsuario}"/>
+                            <button type="submit" class="btn btn-sm btn-link text-danger text-decoration-none"><i class="fa-regular fa-circle-xmark"></i> [[#{accion.cancelar}]]</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center p-4" th:if="${reservas == null or reservas.empty}">
+        <i class="fa-regular fa-calendar fa-2x text-muted d-block mb-2"></i>
+        <span class="small">[[#{lista.vacia}]]</span>
+    </div>
+</section>
