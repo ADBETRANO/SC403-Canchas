@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{general/fragmentos :: head}"></head>
+    <body>
+        <header th:replace="~{general/fragmentos :: header}"></header>
+
+        <!-- HU-12: resumen y confirmación de la reserva -->
+        <div class="container py-4" style="max-width: 500px;">
+            <div class="text-center"><span class="codigo-pantalla">P-05 — Confirmar Reserva</span></div>
+            <h2 class="titulo-pagina text-center">[[#{reserva.resumen}]]</h2>
+            <p class="subtitulo-pagina text-center">[[#{reserva.resumenTexto}]]</p>
+            <div class="card-golazo overflow-hidden">
+                <div class="p-4 pb-2">
+                    <div class="tipo-golazo">[[${cancha.tipoCancha.descripcion}]]</div>
+                    <h5 class="fw-bold border-bottom pb-3">[[${cancha.nombre}]]</h5>
+                    <div class="d-flex justify-content-between border-bottom py-2 small">
+                        <span class="text-muted"><i class="fa-regular fa-calendar"></i> [[#{reserva.fecha}]]</span><span class="hora-golazo">[[${fecha}]]</span></div>
+                    <div class="d-flex justify-content-between border-bottom py-2 small">
+                        <span class="text-muted"><i class="fa-regular fa-clock"></i> [[#{reserva.horaInicio}]]</span><span class="hora-golazo">[[${horaInicio}]] hrs</span></div>
+                    <div class="d-flex justify-content-between border-bottom py-2 small">
+                        <span class="text-muted"><i class="fa-regular fa-clock"></i> [[#{reserva.horaFin}]]</span><span class="hora-golazo">[[${horaFin}]] hrs ([[#{reserva.unaHora}]])</span></div>
+                    <div class="d-flex justify-content-between py-2 small">
+                        <span class="text-muted"><i class="fa-solid fa-dollar-sign"></i> [[#{reserva.precioHora}]] ([[${tipoTarifa}]])</span><span class="precio-golazo">₡[[${precio.intValue()}]]</span></div>
+                </div>
+                <div class="bg-golazo-claro px-4 py-3 d-flex justify-content-between align-items-center">
+                    <span class="fw-bold">[[#{reserva.totalPagar}]]</span>
+                    <span class="precio-golazo fs-4 text-golazo">₡[[${precio.intValue()}]]</span>
+                </div>
+                <form method="post" th:action="@{/reserva/guardar}" class="p-4">
+                    <input type="hidden" name="idCancha" th:value="${cancha.idCancha}"/>
+                    <input type="hidden" name="fecha" th:value="${fecha}"/>
+                    <input type="hidden" name="horaInicio" th:value="${horaInicio}"/>
+                    <div class="border rounded p-3 mb-3">
+                        <label for="idUsuario" class="tipo-golazo text-dark">[[#{reserva.titular}]]</label>
+                        <!-- Mientras no se vea Spring Security, el cliente se elige de una lista -->
+                        <select id="idUsuario" name="idUsuario" class="form-select form-select-sm mt-1" required>
+                            <option th:each="u : ${usuarios}" th:value="${u.idUsuario}"
+                                    th:text="${u.nombre + ' ' + u.apellidos + ' · ' + u.correo}"></option>
+                        </select>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <a class="btn btn-light flex-fill" th:href="@{/reserva/disponibilidad(idCancha=${cancha.idCancha},fecha=${fecha})}">
+                            <i class="fa-solid fa-arrow-left"></i> [[#{accion.cancelar}]]</a>
+                        <button type="submit" class="btn btn-golazo flex-fill">[[#{reserva.confirmar}]] <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <section th:replace="~{general/fragmentos :: mostrarToast}"></section>
+        <footer th:replace="~{general/fragmentos :: footer}"></footer>
+    </body>
+</html>

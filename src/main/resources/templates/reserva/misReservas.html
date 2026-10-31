@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{general/fragmentos :: head}"></head>
+    <body>
+        <header th:replace="~{general/fragmentos :: header}"></header>
+
+        <!-- HU-14 y HU-15: historial de reservas del cliente -->
+        <div class="container contenido-golazo py-4">
+            <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 border-bottom pb-3 mb-3">
+                <div>
+                    <span class="codigo-pantalla">P-07 — Mis Reservas</span>
+                    <h3 class="titulo-pagina">[[#{reserva.misReservas}]]</h3>
+                    <div class="subtitulo-pagina">[[#{reserva.misReservasTexto}]]</div>
+                </div>
+                <div class="d-flex gap-2 align-items-center" th:if="${idUsuario != null}">
+                    <div class="filtros-golazo">
+                        <a th:href="@{/reserva/misReservas(idUsuario=${idUsuario})}" th:class="${estado == null} ? 'activo' : ''">[[#{reserva.todas}]]</a>
+                        <a th:href="@{/reserva/misReservas(idUsuario=${idUsuario},estado='Confirmada')}" th:class="${estado == 'Confirmada'} ? 'activo' : ''">Confirmada</a>
+                        <a th:href="@{/reserva/misReservas(idUsuario=${idUsuario},estado='Pendiente')}" th:class="${estado == 'Pendiente'} ? 'activo' : ''">Pendiente</a>
+                        <a th:href="@{/reserva/misReservas(idUsuario=${idUsuario},estado='Cancelada')}" th:class="${estado == 'Cancelada'} ? 'activo' : ''">Cancelada</a>
+                    </div>
+                    <a class="btn btn-golazo btn-sm" th:href="@{/reserva/disponibilidad}"><i class="fa-solid fa-circle-plus"></i> [[#{reserva.nueva}]]</a>
+                </div>
+            </div>
+
+            <!-- Mientras no se vea Spring Security, el cliente se elige de una lista -->
+            <form method="get" th:action="@{/reserva/misReservas}" class="row g-2 align-items-end mb-3">
+                <div class="col-md-6">
+                    <label for="idUsuario" class="small">[[#{reserva.seleccioneCliente}]]</label>
+                    <select id="idUsuario" name="idUsuario" class="form-select form-select-sm" required>
+                        <option th:each="u : ${usuarios}" th:value="${u.idUsuario}"
+                                th:text="${u.nombre + ' ' + u.apellidos + ' (' + u.username + ')'}"
+                                th:selected="${u.idUsuario == idUsuario}"></option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-golazo btn-sm w-100"><i class="fa-solid fa-magnifying-glass"></i> [[#{accion.buscar}]]</button>
+                </div>
+            </form>
+
+            <div class="card-golazo" th:if="${idUsuario != null}">
+                <section th:replace="~{reserva/fragmentos :: tabla(true)}"></section>
+            </div>
+        </div>
+
+        <section th:replace="~{general/fragmentos :: mostrarToast}"></section>
+        <footer th:replace="~{general/fragmentos :: footer}"></footer>
+    </body>
+</html>
