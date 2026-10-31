@@ -1,0 +1,500 @@
+/* ===== Colores y letras de Golazo (los mismos del prototipo) ===== */
+:root {
+    --golazo-verde: #047857;        /* botones y logo */
+    --golazo-verde-hover: #065f46;
+    --golazo-verde-medio: #059669;  /* opción activa del menú lateral */
+    --golazo-verde-oscuro: #022c22; /* menú lateral */
+    --golazo-verde-900: #064e3b;
+    --golazo-verde-claro: #ecfdf5;
+    --golazo-borde-verde: #a7f3d0;
+    --golazo-fondo: #f5f5f5;
+    --golazo-borde: #e5e5e5;
+    --golazo-gris: #737373;
+    --letra: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --letra-mono: 'JetBrains Mono', Consolas, monospace;
+}
+
+/* La página ocupa toda la pantalla y el footer (clase mt-auto) queda siempre abajo */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--golazo-fondo);
+    color: #171717;
+    font-family: var(--letra);
+    font-size: 0.875rem;
+}
+h1, h2, h3, h4, h5, .titulo-pagina {
+    font-family: var(--letra);
+    letter-spacing: -0.01em;
+}
+
+/* ===== Botones ===== */
+.btn {
+    border-radius: 10px;
+    font-weight: 600;
+}
+.btn-sm {
+    border-radius: 8px;
+    font-size: 0.78rem;
+}
+.btn-golazo {
+    background-color: var(--golazo-verde);
+    border-color: var(--golazo-verde);
+    color: white;
+}
+.btn-golazo:hover,
+.btn-golazo:focus {
+    background-color: var(--golazo-verde-hover);
+    border-color: var(--golazo-verde-hover);
+    color: white;
+}
+.btn-outline-golazo {
+    border-color: var(--golazo-verde);
+    color: var(--golazo-verde);
+}
+.btn-outline-golazo:hover {
+    background-color: var(--golazo-verde);
+    color: white;
+}
+.btn-blanco {
+    background-color: white;
+    border: 1px solid #d4d4d4;
+    color: #404040;
+}
+.btn-blanco:hover {
+    background-color: #fafafa;
+}
+.text-golazo {
+    color: var(--golazo-verde);
+}
+.bg-golazo {
+    background-color: var(--golazo-verde);
+}
+.bg-golazo-claro {
+    background-color: var(--golazo-verde-claro);
+}
+a {
+    color: var(--golazo-verde);
+}
+.form-control,
+.form-select {
+    border-radius: 10px;
+    border-color: #d4d4d4;
+    font-size: 0.85rem;
+}
+.form-control:focus,
+.form-select:focus {
+    border-color: #059669;
+    box-shadow: 0 0 0 0.2rem rgba(5, 150, 105, 0.2);
+}
+
+/* ===== Código de pantalla del prototipo (P-01 a P-14) ===== */
+.codigo-pantalla {
+    display: inline-block;
+    font-family: var(--letra-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--golazo-verde-hover);
+    background-color: var(--golazo-verde-claro);
+    border: 1px solid var(--golazo-borde-verde);
+    padding: 1px 8px;
+    border-radius: 6px;
+    margin-bottom: 4px;
+}
+
+/* ===== Encabezado blanco con el logo ===== */
+.navbar-golazo {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid var(--golazo-borde);
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+}
+.navbar-golazo .nav-link {
+    color: #525252;
+    font-weight: 500;
+    font-size: 0.85rem;
+    border-radius: 8px;
+    padding: 6px 12px !important;
+}
+.navbar-golazo .nav-link:hover {
+    color: #171717;
+    background-color: #f5f5f5;
+}
+.logo-golazo {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background-color: var(--golazo-verde);
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+}
+.marca-golazo {
+    font-weight: 800;
+    font-size: 1.25rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: #171717;
+}
+.submarca-golazo {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--golazo-verde);
+}
+
+/* ===== Pie de página ===== */
+.footer-golazo {
+    background-color: #171717;
+    color: #a3a3a3;
+    font-size: 0.75rem;
+    border-top: 1px solid #262626;
+}
+.footer-golazo .fw-bold {
+    color: #e5e5e5;
+}
+.footer-golazo small {
+    color: #737373;
+    font-size: 0.7rem;
+}
+
+/* ===== Contenido ===== */
+.contenido-golazo {
+    max-width: 1140px;
+}
+.titulo-pagina {
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+.subtitulo-pagina {
+    color: var(--golazo-gris);
+    font-size: 0.75rem;
+}
+.card-golazo {
+    background-color: white;
+    border: 1px solid var(--golazo-borde);
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* ===== Portada (hero) ===== */
+.hero-golazo {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(90deg, #022c22 0%, #064e3b 50%, #171717 100%);
+    color: white;
+    border-radius: 16px;
+    border: 1px solid #065f46;
+}
+.hero-golazo h1 {
+    font-weight: 800;
+    font-size: 2.25rem;
+    max-width: 672px;
+}
+.hero-golazo p {
+    color: rgba(209, 250, 229, 0.9);
+}
+.etiqueta-hero {
+    display: inline-block;
+    background-color: rgba(6, 78, 59, 0.8);
+    border: 1px solid rgba(4, 120, 87, 0.6);
+    color: #6ee7b7;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 6px;
+}
+
+/* ===== Filtros tipo pestaña (Todas, Fútbol 5...) ===== */
+.filtros-golazo {
+    display: inline-flex;
+    gap: 4px;
+    padding: 4px;
+    background-color: rgba(229, 229, 229, 0.7);
+    border-radius: 12px;
+}
+.filtros-golazo a {
+    padding: 5px 14px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #525252;
+    border-radius: 8px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.filtros-golazo a:hover {
+    color: #171717;
+}
+.filtros-golazo a.activo {
+    background-color: white;
+    color: var(--golazo-verde-900);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Dibujo de la cancha (igual al del prototipo) ===== */
+.campo-golazo {
+    position: relative;
+    min-height: 165px;
+    background: linear-gradient(135deg, #047857 0%, #065f46 50%, #022c22 100%);
+    border-radius: 12px;
+    overflow: hidden;
+}
+/* franjas del césped y puntos de la grama sintética */
+.campo-golazo::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, 0.05) 16.66%, rgba(0, 0, 0, 0.05) 16.66%, rgba(0, 0, 0, 0.05) 33.33%),
+        radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 100% 100%, 16px 16px;
+}
+.campo-golazo .lineas-campo {
+    position: absolute;
+    top: 8%;
+    left: 4%;
+    width: 92%;
+    height: 80%;
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.5);
+    stroke-width: 2.5;
+}
+.campo-golazo .lineas-campo .punto {
+    fill: rgba(255, 255, 255, 0.7);
+}
+.campo-golazo .lineas-campo .red {
+    stroke: rgba(255, 255, 255, 0.3);
+    fill: rgba(255, 255, 255, 0.1);
+    stroke-dasharray: 3 3;
+}
+.campo-golazo img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.campo-golazo .etiqueta-campo {
+    position: absolute;
+    bottom: 8px;
+    left: 12px;
+    right: 12px;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    font-size: 0.72rem;
+}
+.campo-golazo .etiqueta-campo span:first-child {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #d1fae5;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 1px 8px;
+    border-radius: 4px;
+}
+.campo-golazo .etiqueta-campo span:last-child {
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+/* en las tarjetas el dibujo solo redondea las esquinas de arriba */
+.card-golazo > .campo-golazo {
+    border-radius: 16px 16px 0 0;
+    min-height: 220px;
+}
+/* en el detalle de la cancha el dibujo ocupa todo el panel oscuro */
+.detalle-campo .campo-golazo {
+    height: 100%;
+    min-height: 220px;
+}
+.tipo-golazo {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--golazo-verde-hover);
+    text-transform: uppercase;
+}
+.precio-golazo,
+.hora-golazo,
+.id-golazo,
+.valor-golazo {
+    font-family: var(--letra-mono);
+    font-variant-numeric: tabular-nums;
+}
+.precio-golazo,
+.hora-golazo {
+    font-weight: 700;
+}
+
+/* ===== Espacios de la agenda (disponibilidad) ===== */
+.espacio-golazo {
+    border: 1px solid rgba(167, 243, 208, 0.9);
+    background-color: rgba(236, 253, 245, 0.4);
+    border-radius: 12px;
+    padding: 12px;
+    height: 100%;
+}
+.espacio-golazo:hover {
+    border-color: #10b981;
+}
+.espacio-ocupado {
+    border-color: var(--golazo-borde);
+    background-color: rgba(245, 245, 245, 0.8);
+    color: #737373;
+    opacity: 0.6;
+}
+
+/* ===== Métodos de pago ===== */
+.metodo-golazo {
+    border: 1px solid var(--golazo-borde);
+    border-radius: 12px;
+    padding: 14px 6px;
+    text-align: center;
+    cursor: pointer;
+    display: block;
+    color: #525252;
+}
+.btn-check:checked + .metodo-golazo {
+    border: 2px solid var(--golazo-verde);
+    background-color: var(--golazo-verde-claro);
+    color: var(--golazo-verde-hover);
+    font-weight: 700;
+}
+
+/* ===== Panel administrativo con menú lateral ===== */
+.admin-golazo {
+    display: flex;
+    flex-grow: 1;
+}
+.sidebar-golazo {
+    width: 256px;
+    flex-shrink: 0;
+    background-color: var(--golazo-verde-oscuro);
+    color: #d1fae5;
+    padding: 16px;
+    border-right: 1px solid rgba(6, 78, 59, 0.6);
+}
+.sidebar-golazo .caja-admin {
+    background-color: rgba(6, 78, 59, 0.4);
+    border: 1px solid rgba(6, 95, 70, 0.6);
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 22px;
+}
+.sidebar-golazo .escudo-admin {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background-color: rgba(245, 158, 11, 0.2);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    color: #fcd34d;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.sidebar-golazo .titulo-admin {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #6ee7b7;
+}
+.sidebar-golazo .seccion {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: rgba(52, 211, 153, 0.6);
+    text-transform: uppercase;
+    margin: 8px 8px 4px;
+}
+.sidebar-golazo .nav-link {
+    color: rgba(209, 250, 229, 0.8);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin-bottom: 2px;
+}
+.sidebar-golazo .nav-link i {
+    color: #6ee7b7;
+    width: 16px;
+}
+.sidebar-golazo .nav-link:hover {
+    background-color: rgba(6, 78, 59, 0.6);
+    color: white;
+}
+.sidebar-golazo .nav-link.activo {
+    background-color: var(--golazo-verde-medio);
+    color: white;
+    font-weight: 600;
+}
+.sidebar-golazo .nav-link.activo i {
+    color: white;
+}
+.admin-contenido {
+    flex-grow: 1;
+    padding: 32px;
+    max-width: 1280px;
+}
+
+/* ===== Tablas ===== */
+.tabla-golazo thead th {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #525252;
+    background-color: #fafafa;
+    border-bottom: 1px solid var(--golazo-borde);
+    padding: 12px 16px;
+}
+.tabla-golazo td {
+    font-size: 0.78rem;
+    vertical-align: middle;
+    padding: 12px 16px;
+}
+.id-golazo {
+    color: var(--golazo-gris);
+    font-size: 0.75rem;
+}
+.tabla-golazo .badge {
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+/* ===== Tarjetas de métricas ===== */
+.metrica-golazo {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--golazo-gris);
+}
+.valor-golazo {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+/* Bootstrap llega hasta 6 columnas: se agrega 7 para la agenda de horarios */
+@media (min-width: 1200px) {
+    .row-cols-xl-7 > * {
+        flex: 0 0 auto;
+        width: 14.2857%;
+    }
+}
+/* En pantallas pequeñas el menú lateral se pone arriba */
+@media (max-width: 991px) {
+    .admin-golazo {
+        flex-direction: column;
+    }
+    .sidebar-golazo {
+        width: 100%;
+    }
+}

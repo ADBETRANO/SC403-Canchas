@@ -1,0 +1,183 @@
+<!-- Fragmento #1 que irá en el head de todas las páginas, así se incluye todo lo necesario de configuración-->
+<head th:fragment="head">
+    <title>Golazo</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" type="image/png" sizes="32x32" th:href="@{/fav/favicon-32x32.png}"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+    <link th:href="@{/css/golazo.css}" rel="stylesheet"/>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/js/rutinas.js}"></script>
+</head>
+
+
+<!-- Fragmento #2  define el encabezado de las páginas: logo, menú y botón para crear cuenta -->
+<header th:fragment="header" class="header">
+    <nav class="navbar navbar-expand-md navbar-golazo py-2">
+        <div class="container">
+            <a th:href="@{/}" class="navbar-brand d-flex align-items-center gap-2">
+                <span class="logo-golazo"><i class="fa-solid fa-futbol"></i></span>
+                <span>
+                    <span class="marca-golazo d-block">GOLAZO</span>
+                    <span class="submarca-golazo">[[#{plantilla.submarca}]]</span>
+                </span>
+            </a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item px-1"><a class="nav-link" th:href="@{/}">[[#{plantilla.catalogo}]]</a></li>
+                    <li class="nav-item px-1"><a class="nav-link" th:href="@{/reserva/disponibilidad}">[[#{plantilla.reservar}]]</a></li>
+                    <li class="nav-item px-1"><a class="nav-link" th:href="@{/reserva/misReservas}">[[#{plantilla.misReservas}]]</a></li>
+                    <li class="nav-item px-1"><a class="nav-link" th:href="@{/cancha/listado}">[[#{plantilla.admin}]]</a></li>
+                </ul>
+                <a class="btn btn-golazo btn-sm px-3" th:href="@{/registro/nuevo}">
+                    <i class="fa-solid fa-user-plus"></i> [[#{plantilla.registrarse}]]</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Fragmento #3  define el footer de las páginas -->
+<footer th:fragment="footer" class="footer-golazo py-4 mt-auto d-print-none">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <div>
+            <div class="fw-bold">[[#{plantilla.derechos}]]</div>
+            <small>[[#{plantilla.pie}]]</small>
+        </div>
+        <small>[[#{plantilla.pieDerecha}]]</small>
+    </div>
+</footer>
+
+<!-- Fragmentos #4 define una ventana tipo Toast para mostrar mensajes al usuario -->
+<section th:fragment="mostrarToast">
+    <div aria-live="polite" aria-atomic="true" 
+         class="position-fixed top-50 start-50 translate-middle" style="z-index: 1080;">                
+        <div th:if="${error}" class="toast show"
+             role="alert"
+             aria-live="assertive"                     
+             aria-atomic="true"
+             data-bs-autohide="true">
+            <div class="toast-header text-white bg-danger">
+                <i class="fa-solid fa-bomb"></i> <strong class="me-auto"> [[#{error}]]</strong>
+            </div>
+            <div class="toast-body">
+                <p>[[${error}]]</p>
+                <div class="mt-2 pt-2 border-top text-center">
+                    <button type="button" class="btn btn-secondary btn-sm" 
+                            data-bs-dismiss="toast">[[#{accion.cerrar}]]</button>
+                </div>
+            </div>
+        </div>
+        <div th:if="${todoOk}" class="toast show"
+             role="status"
+             aria-live="polite"
+             aria-atomic="true"
+             data-bs-autohide="true">
+            <div class="toast-header text-white bg-success">
+                <i class="fa-solid fa-square-check"></i> <strong class="me-auto"> [[#{atencion}]]</strong>
+            </div>
+            <div class="toast-body">
+                <p>[[${todoOk}]]</p>
+                <div class="mt-2 pt-2 border-top text-center">
+                    <button type="button" class="btn btn-secondary btn-sm" 
+                            data-bs-dismiss="toast">[[#{accion.cerrar}]]</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Fragmentos #5 define una ventana modal para confirmar la eliminación de un registro -->
+<section th:fragment="confirmarEliminar(accionEliminar, nombreId)">
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form th:action="${accionEliminar}" method="post">
+                    <input type="hidden" th:attr="name=${nombreId}" id="modalId"/>
+                    <div class="modal-header bg-warning">
+                        <h5 class="modal-title" id="modalLabel"><i class="fa-solid fa-circle-radiation"></i> [[#{accion.confirmar}]]</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="[[#{accion.cerrar}]]"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>[[#{accion.confirmar.texto1}]]<span id="modalDescripcion"></span>?</p>
+                        <h6>[[#{accion.confirmar.texto2}]]</h6>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fa-solid fa-trash"></i> [[#{accion.eliminar}]]
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            <i class="fa-solid fa-xmark"></i> [[#{accion.cerrar}]]
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Fragmento #6 menú lateral del panel administrativo. "activo" indica la opción seleccionada -->
+<aside th:fragment="menuAdmin(activo)" class="sidebar-golazo">
+    <div class="caja-admin d-flex align-items-center gap-2">
+        <span class="escudo-admin"><i class="fa-solid fa-shield-halved"></i></span>
+        <div>
+            <div class="titulo-admin">[[#{admin.panel}]]</div>
+            <div style="font-size: 0.7rem;">[[#{admin.subtitulo}]]</div>
+        </div>
+    </div>
+    <div class="seccion">[[#{admin.modulos}]]</div>
+    <nav class="nav flex-column">
+        <a th:class="${activo == 'canchas'} ? 'nav-link activo' : 'nav-link'" th:href="@{/cancha/listado}">
+            <i class="fa-solid fa-layer-group me-2"></i>[[#{plantilla.canchas}]]</a>
+        <a th:class="${activo == 'horarios'} ? 'nav-link activo' : 'nav-link'" th:href="@{/horario/listado}">
+            <i class="fa-regular fa-clock me-2"></i>[[#{plantilla.horarios}]]</a>
+        <a th:class="${activo == 'tarifas'} ? 'nav-link activo' : 'nav-link'" th:href="@{/tarifa/listado}">
+            <i class="fa-solid fa-coins me-2"></i>[[#{plantilla.tarifas}]]</a>
+        <a th:class="${activo == 'reservas'} ? 'nav-link activo' : 'nav-link'" th:href="@{/reserva/listado}">
+            <i class="fa-regular fa-calendar-check me-2"></i>[[#{plantilla.reservas}]]</a>
+        <a th:class="${activo == 'usuarios'} ? 'nav-link activo' : 'nav-link'" th:href="@{/usuario/listado}">
+            <i class="fa-solid fa-users me-2"></i>[[#{plantilla.usuarios}]]</a>
+        <a th:class="${activo == 'tipos'} ? 'nav-link activo' : 'nav-link'" th:href="@{/tipoCancha/listado}">
+            <i class="fa-solid fa-layer-group me-2"></i>[[#{plantilla.tiposCancha}]]</a>
+    </nav>
+    <hr class="border-success"/>
+    <div class="seccion">[[#{admin.vistaCliente}]]</div>
+    <nav class="nav flex-column">
+        <a class="nav-link" th:href="@{/}"><i class="fa-regular fa-eye me-2"></i>[[#{admin.verCatalogo}]]</a>
+    </nav>
+</aside>
+
+<!-- Fragmento #7 dibujo de la cancha (o su imagen de Firebase si tiene) con el tipo y el nombre abajo -->
+<div th:fragment="campo(imagen, tipo, nombre)" class="campo-golazo">
+    <img th:if="${imagen != null}" th:src="${imagen}" alt="Cancha"/>
+    <svg th:if="${imagen == null}" viewBox="0 0 400 240" class="lineas-campo">
+        <rect x="15" y="15" width="370" height="210" rx="4"/>
+        <line x1="200" y1="15" x2="200" y2="225"/>
+        <circle cx="200" cy="120" r="38"/>
+        <circle cx="200" cy="120" r="3" class="punto"/>
+        <rect x="15" y="60" width="60" height="120"/>
+        <rect x="15" y="85" width="25" height="70"/>
+        <path d="M 75 100 A 25 25 0 0 1 75 140"/>
+        <circle cx="55" cy="120" r="2.5" class="punto"/>
+        <rect x="3" y="95" width="12" height="50" class="red"/>
+        <rect x="325" y="60" width="60" height="120"/>
+        <rect x="360" y="85" width="25" height="70"/>
+        <path d="M 325 100 A 25 25 0 0 0 325 140"/>
+        <circle cx="345" cy="120" r="2.5" class="punto"/>
+        <rect x="385" y="95" width="12" height="50" class="red"/>
+        <path d="M 15 27 A 12 12 0 0 0 27 15"/>
+        <path d="M 15 213 A 12 12 0 0 1 27 225"/>
+        <path d="M 373 15 A 12 12 0 0 0 385 27"/>
+        <path d="M 373 225 A 12 12 0 0 1 385 213"/>
+    </svg>
+    <div class="etiqueta-campo">
+        <span>[[${tipo}]]</span>
+        <span>[[${nombre}]]</span>
+    </div>
+</div>

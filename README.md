@@ -25,8 +25,9 @@ Los clientes pueden ver las canchas disponibles, reservar y pagar (tarjeta, SINP
 ## 📁 Estructura del repositorio
 | Carpeta | Contenido |
 |---|---|
-| `/docs` | Documento del Avance 1 (Word y PDF), planteamiento, historias de usuario (HU-01 a HU-22), priorización, trazabilidad, modelo de datos y mapa de navegación |
-| `/prototipo` | Enlace del prototipo y capturas de las 14 pantallas (P-01 a P-14) |
+| `/docs` | Documento del Avance 1 (Word y PDF), historias de usuario, priorización, trazabilidad, modelo de datos y mapa de navegación |
+| `/prototipo` | Enlace del prototipo navegable |
+| `/src` | Código fuente de la aplicación Spring Boot |
 
 ## 🌿 Acuerdo de trabajo por ramas
 - **main**: solo versiones estables (entregas de avances). Nadie trabaja directo aquí.
@@ -38,16 +39,39 @@ Los clientes pueden ver las canchas disponibles, reservar y pagar (tarjeta, SINP
 - **Pull requests**: al terminar una historia se abre un PR hacia `develop`, y otro integrante lo revisa antes de unirlo.
 - ⚠️ Nunca subir la clave de Firebase (`.json`) ni la carpeta `target/`.
 
+## ▶️ Requisitos y ejecución
+**Requisitos:** JDK 21, Apache NetBeans (o cualquier IDE con Maven), MySQL 8 (local o Aiven) y MySQL Workbench.
+
+1. Clonar el repositorio y abrir la carpeta raíz como proyecto Maven en NetBeans.
+2. Ejecutar `src/main/resources/creaTablas.sql` en MySQL Workbench (con el usuario administrador). Crea la base `golazo`, el usuario `usuario_golazo` y datos de ejemplo.
+3. Revisar en `application.properties` la conexión: Aiven (activa) o `localhost` (comentada).
+4. Copiar la llave de Firebase (`.json`, la entrega el coordinador por privado) en `src/main/resources/firebase/`. **Nunca se sube al repositorio.**
+5. *Clean and Build* y *Run*. Abrir http://localhost
+
+**Estructura del código (igual a la vista en clase):** `domain` (entidades JPA), `repository` (JpaRepository), `service` (lógica y transacciones), `controller` (rutas MVC) y vistas Thymeleaf + Bootstrap en `templates/<módulo>/listado.html` y `fragmentos.html`.
+
 ## 🎯 Avance 1
 - 📄 Documento completo: [`Avance1_Grupo04_Golazo.pdf`](docs/Avance1_Grupo04_Golazo.pdf)
-- 📁 Documentación por partes: [`/docs`](docs/)
 - 🗺️ Mapa de navegación: [`mapa-navegacion.png`](docs/mapa-navegacion.png)
 - 🎨 Prototipo (Google AI Studio): [ver prototipo](https://aistudio.google.com/apps/36699e65-be67-4da2-9940-cc51c2cc64d7?showAssistant=true&showPreview=true)
-- 🎥 Video de presentación: [ver video](https://drive.google.com/file/d/1mnFoYZFZl3YMKgqFThyYioPjD9qmOUIK/view?usp=sharing)
+- 🎥 Video: [ver video](https://drive.google.com/file/d/1mnFoYZFZl3YMKgqFThyYioPjD9qmOUIK/view?usp=sharing)
+
+## 🚧 Avance 2 – Estado de las historias
+| Turno | Módulo | Responsable | Historias | Estado |
+|---|---|---|---|---|
+| Turno 1 | Proyecto base y reservas y pagos | Carlos Adrián | HU-11, HU-12, HU-13, HU-14, HU-15 | ✅ |
+| Turno 2-4 | Canchas, tipos de cancha, catálogo e imágenes (Firebase) | Daniel | HU-06, HU-07, HU-08, HU-09, HU-10, HU-16 | ⬜ Pendiente |
+| Turno 2-4 | Horarios y tarifas | Emmanuel | HU-17, HU-19, HU-20 | ⬜ Pendiente |
+| Turno 2-4 | Usuarios, registro y reservas del día | Juan Diego | HU-01, HU-05, HU-18, HU-21 | ⬜ Pendiente |
+| Después | Inicio y cierre de sesión | Juan Diego | HU-02, HU-03 | ⏳ cuando se vea Spring Security |
+
+**Meta:** 18 de 22 historias (82 %).
+
+> Mientras no se implemente el inicio de sesión (Spring Security), en *Reservar* y *Mis reservas* el cliente se elige de una lista.
 
 ## 📅 Entregas
 | Entrega | Semana | Estado |
 |---|---|---|
 | Avance 1 – Historias de usuario y prototipo | 5 | ✅ Entregado |
-| Avance 2 – Implementación del 50% | 9 | ⚪ Pendiente |
+| Avance 2 – Implementación del 50% | 9 | 🟡 En progreso |
 | Entrega final y defensa | 15 | ⚪ Pendiente |
