@@ -1,0 +1,51 @@
+<!-- 1 Fragmento con el título del catálogo y los botones para filtrar por tipo de cancha (HU-09) -->
+<section th:fragment="filtros" class="d-flex flex-wrap justify-content-between align-items-end gap-2 mt-4 pb-3 mb-3 border-bottom">
+    <div>
+        <span class="codigo-pantalla">P-03 — Catálogo de canchas</span>
+        <h5 class="fw-bold mb-0">[[#{index.nuestrasCanchas}]]</h5>
+        <div class="subtitulo-pagina">[[#{index.subtitulo}]]</div>
+    </div>
+    <div class="filtros-golazo">
+        <a th:href="@{/}" th:class="${idTipoActual == null} ? 'activo' : ''">[[#{index.todas}]]</a>
+        <a th:each="t : ${tiposCancha}" th:href="@{/catalogo/{id}(id=${t.idTipoCancha})}"
+           th:class="${idTipoActual == t.idTipoCancha} ? 'activo' : ''">[[${t.descripcion}]]</a>
+    </div>
+</section>
+
+<!-- 2 Fragmento con las tarjetas de las canchas activas -->
+<section th:fragment="tarjetas">
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+        <div class="col" th:each="c : ${canchas}">
+            <div class="card-golazo h-100 d-flex flex-column">
+                <div th:replace="~{general/fragmentos :: campo(${c.rutaImagen}, ${c.tipoCancha.descripcion}, ${c.nombre})}"></div>
+                <div class="p-3 d-flex flex-column flex-grow-1">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <div class="tipo-golazo">[[${c.tipoCancha.descripcion}]]</div>
+                            <div class="fw-bold">[[${c.nombre}]]</div>
+                        </div>
+                        <div class="text-end" th:each="t : ${c.tarifas}" th:if="${t.vigente and t.tipoTarifa == 'Diurna'}">
+                            <div class="subtitulo-pagina">[[#{index.porHora}]]</div>
+                            <div class="precio-golazo">₡[[${t.precioHora.intValue()}]]</div>
+                        </div>
+                    </div>
+                    <p class="small text-muted mt-2 mb-2">[[${c.descripcion}]]</p>
+                    <div class="small text-muted mb-2">
+                        <i class="fa-solid fa-users"></i> [[${c.capacidad}]] [[#{index.capacidad}]]
+                        <span th:each="h : ${c.horarios}" th:if="${h.dia == 'Lunes a viernes'}">
+                            · <i class="fa-regular fa-clock"></i> [[${h.horaApertura}]] - [[${h.horaCierre}]]</span>
+                    </div>
+                    <div class="d-flex justify-content-between small border-top pt-2 mb-3 mt-auto">
+                        <span class="text-muted">[[#{index.estado}]]</span>
+                        <span class="text-golazo">[[#{index.disponible}]]</span>
+                    </div>
+                    <a th:href="@{/reserva/disponibilidad(idCancha=${c.idCancha})}" class="btn btn-golazo btn-sm w-100">
+                        <i class="fa-regular fa-calendar"></i> [[#{index.verDisponibilidad}]] <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center p-4" th:if="${canchas == null or canchas.empty}">
+        <span>[[#{lista.vacia}]]</span>
+    </div>
+</section>
