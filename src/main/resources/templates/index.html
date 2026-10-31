@@ -12,6 +12,9 @@
                 <a class="btn btn-light btn-sm fw-bold mt-3 text-golazo" th:href="@{/reserva/disponibilidad}">
                     <i class="fa-regular fa-calendar-plus"></i> [[#{index.reservarAhora}]]</a>
             </section>
+
+            <section th:replace="~{catalogo/fragmentos :: filtros}"></section>
+            <section th:replace="~{catalogo/fragmentos :: tarjetas}"></section>
         </div>
 
         <section th:replace="~{general/fragmentos :: mostrarToast}"></section>
